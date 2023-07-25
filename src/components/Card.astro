@@ -7,7 +7,7 @@ interface Props {
 const { number = "-", name = "Days" } = Astro.props;
 ---
 
-<div class="w-full border-gray-300 bg-white border-2 rounded-lg flex flex-col items-center py-5">
+<div id={name} class="w-full border-gray-300 bg-white border-2 rounded-lg flex flex-col items-center py-5">
 	<h2>{number}</h2>
 	<p>{name}</p>
 </div>

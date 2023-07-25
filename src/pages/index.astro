@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-
 ---
 
 <Layout title="Age calculator">
@@ -17,13 +15,45 @@ import Card from '../components/Card.astro';
 		</div>
 
 		<div class="flex gap-20 mt-20">
-			<Card number="-" name="Years" />
-			<Card number="-" name="Months" />
-			<Card number="-" name="Days" />
+			<div class="w-full border-gray-300 bg-white border-2 rounded-lg flex flex-col items-center py-5">
+				<h2 id="years">-</h2>
+				<p>Years</p>
+			</div>
+			<div class="w-full border-gray-300 bg-white border-2 rounded-lg flex flex-col items-center py-5">
+				<h2 id="months">-</h2>
+				<p>Months</p>
+			</div>
+			<div class="w-full border-gray-300 bg-white border-2 rounded-lg flex flex-col items-center py-5">
+				<h2 id="days">-</h2>
+				<p>Days</p>
+			</div>
 		</div>
 
 	</main>
 </Layout>
+
+<script>
+	const btnCalculate = document.getElementById('btnCalculate');
+	const cardYears = document.getElementById('years');
+	const cardMonths = document.getElementById('months');
+	const cardDays = document.getElementById('days');
+	
+
+	btnCalculate?.addEventListener('click', () => {
+		const inputDate = document.getElementById('inputDate') as HTMLInputElement;
+		const dateBirth = new Date(inputDate.value);
+		const dateNow = new Date();
+
+		console.log(dateBirth, inputDate.value)
+		const age = String(dateNow.getFullYear() - dateBirth.getFullYear());
+		const months = String(dateNow.getMonth() - dateBirth.getMonth());
+		const days = String(dateNow.getDate() - dateBirth.getDate());
+		console.log(age, months, days);
+		cardYears.innerHTML = age;
+		cardMonths.innerHTML = months;
+		cardDays.innerHTML = days;
+	})
+</script>
 
 <style>
 	main {
